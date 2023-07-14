@@ -1,0 +1,172 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --text-color: white;
+  --bg-url: url(./assets/bg-mobile-dark.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(./assets/moon-star.svg);
+}
+.light {
+  --text-color: black;
+  --bg-url: url(./assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(./assets/sun.svg);
+}
+
+body {
+  /*background-image: url(./assets/bg-mobile.jpg);
+  /* background: no-repeat;*/
+  /*background-position: top center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  Elementos linha a linha, porém pode-se fazer um agrupamento em uma unica linha
+  Basta agrupar a sequencia de comandos em uma unica linha, usando backgroud: ;
+  shorthand, descrito abaixo
+  */
+  /* background: color image repeat position/size*/
+  background: var(--bg-url) no-repeat top center/cover;
+}
+
+body * {
+  /* ao usar o body "*" {} ele vai aplicar o estilo CSS de fonte em todo o body,* é um seletor universal. */
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+
+#container {
+  width: 360px;
+  /*border: 1px solid red; Borda para visualizar a caixa*/
+  margin: 56px auto 0px; /*Escrevendo dessa forma fica identico ao exemplo anteriror de varios paramentos para um mesmo elemento, funcionando como um relogio no sentido horario, ele irá aplica primeiro no "topo", depois dos lados e por ultimo em baixo, nota-se que usando os 4 parametros ele irá
+  aplicar na sequencia, top, lateral direita, bottom (baixo) e apos isso na lateral esquerda.*/
+  padding: 0 24px; /* funciona tambem neste elemento*/
+}
+/* tags de imagem, texto (paragafos) serão sempre inline ou seja, linha, magin: auto, por exemplo não funciona em inline,
+já tag de div por exemplos, funciona em bloco onde a margin: auto; já consegue centralizar todo o bloco(box)*/
+
+/*profile*/
+
+#profile {
+  text-align: center; /*Nesse casso estamos pegando a tag pai "profile", que é em linha"inline" e centralizando com o text-aling isso funiona
+                        porque o profile é um bloco.*/
+  padding: 24px;
+}
+
+#profile img {
+  width: 150px; /*Nesse caso ao usar magin:auto, não iria funcionar pois é um elemento em inline.*/
+}
+
+#profile p {
+  font-weight: 500;
+  line-height: 24px;
+  margin: 8px;
+}
+
+/*swtich-mode*/
+
+#switch-mode {
+  position: relative;
+  width: 64px;
+  margin: 4px auto;
+}
+
+.light #switch-mode button {
+  right: 0;
+  left: initial;
+}
+
+#switch-mode button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border: 0;
+  left: 0;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  z-index: 1;
+  transform: translateY(-50%);
+}
+
+#switch-mode span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 9999px;
+  position: relative;
+  z-index: 0;
+}
+
+/*links*/
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 0;
+}
+ul li a {
+  display: flex;
+  justify-content: center;
+  padding: 16px 24px;
+  align-items: center;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur (4px);
+  -webkit-backdrop-filter: blur (4px);
+  border-radius: 8px;
+  font-weight: 580;
+  text-decoration: none;
+  transition: background 0.5s;
+}
+/* pseudo-selector, é o comportamento do bottom, neste caso da lista quando selecionado/passar o mouse sobre o elemento.*/
+ul li a:hover {
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+/*socila media links*/
+
+#social-media {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0;
+  font-size: 24px;
+}
+
+#social-media a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  transition: background 0.3s;
+  border-radius: 50%;
+}
+
+#social-media a:hover {
+  background: var(--highlight-color);
+}
+
+footer {
+  padding: 24px a;
+  text-align: center;
+  font-size: 14px;
+}
+
+/*alinhamento de caixas/elementos 
+Display flex ->
+display block
+alinhamento de texto -> text-align */
